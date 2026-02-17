@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>М. Ю. Лермонтов: Жизнь и Творчество</title>
-    
+    <title>М. Ю. Лермонтов: Поэт, Офицер, Пророк</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,700;1,400&family=Forum&family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,700;0,800;1,500;1,700&family=Forum&family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
@@ -23,9 +23,9 @@
                         'sans': ['"Montserrat"', 'sans-serif'],
                     },
                     colors: {
-                        'lermont-dark': '#0a0a0a',
-                        'lermont-gold': '#b08d57',
-                        'lermont-accent': '#7a1d1d',
+                        'lermont-dark': '#080808',
+                        'lermont-gold': '#d4af37',
+                        'lermont-bg': '#0f0f0f',
                     }
                 }
             }
@@ -33,218 +33,197 @@
     </script>
 
     <style>
-        body { background-color: #0a0a0a; color: #d1d1d1; overflow-x: hidden; }
-        .hero-gradient { background: linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,1) 100%); }
-        .section-line { height: 1px; background: linear-gradient(90deg, transparent, #b08d57, transparent); opacity: 0.3; }
-        .parallax-img { transition: transform 0.5s cubic-bezier(0.33, 1, 0.68, 1); }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0a0a0a; }
-        ::-webkit-scrollbar-thumb { background: #b08d57; }
+        body {
+            background-color: #080808;
+            color: #e5e5e5;
+            overflow-x: hidden;
+            font-size: 20px; /* Увеличен базовый шрифт */
+        }
+        .text-huge { font-size: clamp(3rem, 15vw, 12rem); }
+        .hero-gradient { background: linear-gradient(180deg, rgba(8,8,8,0) 0%, rgba(8,8,8,1) 100%); }
+        .section-line { height: 2px; background: #d4af37; opacity: 0.4; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; }
+
+        /* Плавное появление для крупных блоков */
+        .reveal-block { opacity: 0; transform: translateY(50px); }
     </style>
 </head>
-<body class="font-sans antialiased">
+<body class="font-sans antialiased selection:bg-lermont-gold selection:text-black">
 
-    <nav class="fixed w-full z-50 py-8 px-12 flex justify-between items-center mix-blend-difference">
-        <span class="font-forum text-xl text-lermont-gold tracking-[0.4em]">ЛЕРМОНТОВ</span>
-        <div class="hidden md:flex space-x-12 text-[10px] tracking-[0.3em] uppercase font-light">
+    <nav class="fixed w-full z-50 py-10 px-12 flex justify-between items-center mix-blend-difference">
+        <span class="font-forum text-2xl text-lermont-gold tracking-[0.5em] font-bold">М.Ю. ЛЕРМОНТОВ</span>
+        <div class="hidden lg:flex space-x-12 text-xs tracking-[0.4em] uppercase font-black">
             <a href="#intro" class="hover:text-lermont-gold transition">Начало</a>
-            <a href="#caucasus" class="hover:text-lermont-gold transition">Кавказ</a>
-            <a href="#prose" class="hover:text-lermont-gold transition">Печорин</a>
-            <a href="#fate" class="hover:text-lermont-gold transition">Судьба</a>
+            <a href="#bio" class="hover:text-lermont-gold transition">Судьба</a>
+            <a href="#prose" class="hover:text-lermont-gold transition">Роман</a>
+            <a href="#art" class="hover:text-lermont-gold transition">Галерея</a>
         </div>
     </nav>
 
-    <section id="intro" class="relative h-[120vh] flex items-center justify-center overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2070" 
-             class="absolute inset-0 w-full h-full object-cover opacity-30 scale-110" id="hero-img" alt="Горы">
+    <section id="intro" class="relative h-screen flex items-center justify-center overflow-hidden">
+        <img src="https://www.miloserdie.ru/wp-content/uploads/2021/07/1-19-1024x719.jpg"
+             class="absolute inset-0 w-full h-full object-cover opacity-40 scale-105" id="hero-img">
         <div class="absolute inset-0 hero-gradient"></div>
-        
-        <div class="relative z-10 text-center max-w-5xl px-6">
-            <p class="font-forum text-lermont-gold tracking-[0.6em] mb-6 opacity-0 translate-y-10 hero-text">1814 — 1841</p>
-            <h1 class="font-forum text-6xl md:text-[10rem] text-white leading-none mb-10 opacity-0 translate-y-10 hero-text uppercase">
-                Голос <br> столетия
+
+        <div class="relative z-10 text-center px-4">
+            <p class="font-forum text-lermont-gold text-2xl tracking-[0.8em] mb-8 font-bold opacity-0 hero-text">1814 — 1841</p>
+            <h1 class="font-forum text-huge text-white leading-none font-black opacity-0 hero-text uppercase">
+                ПОЭТ <br> ГОР
             </h1>
-            <div class="w-full max-w-xs mx-auto h-px bg-lermont-gold opacity-30 mb-10"></div>
-            <p class="font-serif italic text-2xl md:text-3xl text-gray-400 opacity-0 translate-y-10 hero-text">
-                «Я рожден с душою кипучею, как лава...»
+            <p class="font-serif italic text-3xl md:text-5xl text-gray-300 mt-10 opacity-0 hero-text max-w-4xl mx-auto">
+                «Я ищу свободы и покоя!»
             </p>
         </div>
     </section>
 
-    <section class="py-32 px-6 md:px-24">
-        <div class="max-w-4xl mx-auto">
-            <div class="section-line mb-20"></div>
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-                <div class="md:col-span-4 reveal-text">
-                    <h2 class="font-forum text-lermont-gold text-3xl sticky top-32 uppercase">Одиночество в толпе</h2>
-                </div>
-                <div class="md:col-span-8 reveal-text">
-                    <p class="font-serif text-2xl leading-relaxed mb-8 italic">
-                        Михаил Лермонтов вошел в литературу как наследник Пушкина, но его голос был лишен пушкинской светлой гармонии. Это был голос человека, разочарованного в своем времени.
-                    </p>
-                    <p class="font-sans font-light text-lg leading-loose text-gray-400">
-                        Потеряв мать в раннем возрасте и воспитываясь властной бабушкой в имении Тарханы, поэт с детства привык к глубокому внутреннему анализу. Его ранняя лирика — это дневник души, страдающей от несовершенства мира. Он не просто поэт, он — философ, поставивший под сомнение идеалы своего поколения.
-                    </p>
-                </div>
-            </div>
+    <section class="py-40 px-6 bg-lermont-dark">
+        <div class="max-w-6xl mx-auto text-center reveal-block">
+            <h2 class="font-serif italic text-4xl md:text-6xl text-white leading-tight">
+                «Печально я гляжу на наше поколенье! <br> Его грядущее — иль пусто, иль темно...»
+            </h2>
+            <div class="section-line w-32 mx-auto mt-16"></div>
         </div>
     </section>
 
-    <section id="caucasus" class="py-32 bg-[#0c0c0c]">
-        <div class="container mx-auto px-6">
-            <div class="relative h-[600px] overflow-hidden mb-20">
-                <img src="https://images.unsplash.com/photo-1549880338-65ddcdfd017b?auto=format&fit=crop&q=80&w=2070" 
-                     class="w-full h-full object-cover grayscale opacity-50 parallax-img" alt="Кавказ">
-                <div class="absolute inset-0 flex items-center justify-center">
-                    <h2 class="font-forum text-6xl md:text-9xl text-white mix-blend-overlay uppercase tracking-tighter">Свободный Кавказ</h2>
-                </div>
-            </div>
-            
-            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-                <div class="reveal-text">
-                    <p class="font-serif text-xl italic text-lermont-gold mb-6">«Кавказ! далекая страна! Жилище вольности простой!»</p>
-                    <p class="font-light leading-relaxed">
-                        Кавказ стал для Лермонтова второй родиной. Здесь, среди величественных гор и вольных народов, он находил покой, которого не было в петербургских салонах. Первая ссылка за стихотворение «Смерть поэта» открыла в нем не только великого литератора, но и талантливого художника-пейзажиста.
-                    </p>
-                </div>
-                <div class="reveal-text">
-                    <p class="font-light leading-relaxed mt-0 md:mt-14">
-                        Именно кавказские впечатления легли в основу таких шедевров, как «Мцыри» и «Демон». В этих произведениях природа выступает не фоном, а живой стихией, созвучной внутреннему бунту героев, стремящихся к свободе любой ценой.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="prose" class="py-32 bg-lermont-dark border-y border-white/5">
-        <div class="max-w-6xl mx-auto px-6">
-            <div class="text-center mb-24 reveal-text">
-                <h2 class="font-forum text-5xl text-white mb-6 uppercase tracking-widest">Герой нашего времени</h2>
-                <p class="font-serif italic text-lermont-gold text-xl">Разбор ключевого произведения 9 класса</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="border border-white/10 p-10 bg-[#0f0f0f] reveal-text">
-                    <span class="font-forum text-lermont-gold text-4xl block mb-6 italic">01.</span>
-                    <h3 class="font-forum text-xl text-white mb-4 uppercase">Лишний человек</h3>
-                    <p class="font-light text-sm leading-relaxed text-gray-400">
-                        Григорий Печорин — не классический герой. Он обладает огромной энергией, но не находит ей применения. Его интеллект и воля тратятся на мелкие интриги и разрушение жизней окружающих его людей.
-                    </p>
-                </div>
-                <div class="border border-white/10 p-10 bg-[#0f0f0f] reveal-text">
-                    <span class="font-forum text-lermont-gold text-4xl block mb-6 italic">02.</span>
-                    <h3 class="font-forum text-xl text-white mb-4 uppercase">Психологизм</h3>
-                    <p class="font-light text-sm leading-relaxed text-gray-400">
-                        Лермонтов первым в русской прозе делает акцент не на событиях, а на истории души. «Журнал Печорина» — это глубочайший самоанализ, где герой безжалостно обнажает свои пороки и сомнения.
-                    </p>
-                </div>
-                <div class="border border-white/10 p-10 bg-[#0f0f0f] reveal-text">
-                    <span class="font-forum text-lermont-gold text-4xl block mb-6 italic">03.</span>
-                    <h3 class="font-forum text-xl text-white mb-4 uppercase">Композиция</h3>
-                    <p class="font-light text-sm leading-relaxed text-gray-400">
-                        Нарушенная хронология романа («Бэла», «Максим Максимыч», «Тамань», «Княжна Мери», «Фаталист») позволяет читателю сначала увидеть Печорина глазами других, и лишь в конце понять мотивы его поступков.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="fate" class="py-32 px-6">
-        <div class="max-w-4xl mx-auto text-center reveal-text">
-            <h2 class="font-forum text-4xl text-white mb-16 uppercase">Последний акт</h2>
-            <div class="relative p-12 border-gold border">
-                <p class="font-serif text-3xl italic leading-tight mb-8">
-                    «Ужасная судьба отца и сына <br> Подвигнуть нас могла бы на дела...»
-                </p>
-                <div class="font-light text-gray-400 leading-loose text-left">
-                    <p class="mb-6">
-                        15 июля 1841 года у подножия горы Машук состоялась дуэль с Николаем Мартыновым. Современники вспоминали, что Лермонтов, считая повод для дуэли ничтожным, выстрелил в воздух. Мартынов же целился долго и выстрелил прямо в сердце.
+    <section id="bio" class="py-40 px-6 md:px-24">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-24 items-start">
+            <div class="reveal-block">
+                <h2 class="font-forum text-6xl text-lermont-gold mb-12 font-bold uppercase leading-tight">Одинокий странник</h2>
+                <div class="font-sans text-2xl leading-relaxed space-y-10 text-gray-200">
+                    <p class="font-bold border-l-4 border-lermont-gold pl-6">
+                        Михаил Лермонтов — это не просто классик. Это человек, который в 26 лет успел разочароваться в мире, изменить русскую прозу и предсказать собственную гибель.
                     </p>
                     <p>
-                        Смерть Лермонтова была воспринята лучшей частью общества как национальная трагедия. Ему было всего 26 лет. За этот невероятно короткий срок он успел создать целую вселенную, ставшую фундаментом для всей последующей русской литературы.
+                        Воспитанный в Тарханах, он с детства ощущал разрыв между реальностью и своими мечтами. Его жизнь была чередой ссылок и сражений. Кавказ стал для него местом силы и вдохновения, где он создал свои лучшие поэмы: <span class="text-white font-bold">«Мцыри»</span> и <span class="text-white font-bold">«Демон»</span>.
                     </p>
+                    <p class="text-gray-400">
+                        Он не искал одобрения общества. Напротив, его стихи часто были вызовом — как знаменитое «Смерть поэта», за которое он поплатился свободой, но обрел бессмертие в сердцах читателей.
+                    </p>
+                </div>
+            </div>
+            <div class="relative reveal-block">
+                <div class="absolute -inset-4 border-2 border-lermont-gold/20 translate-x-8 translate-y-8"></div>
+                <img src="https://lh3.googleusercontent.com/proxy/fVux01evU8B728L7rjjmvWl6p2KW_3ozGPJBmDfJcxkLD_vpG6thVOp1JUQp4FJdQqxHPEFYpIJ_GDoabbFIJfUKqhkrWYc"
+                     class="relative w-full shadow-2xl grayscale hover:grayscale-0 transition duration-1000">
+            </div>
+        </div>
+    </section>
+
+    <section id="prose" class="py-40 bg-lermont-bg">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col items-center mb-32 reveal-block">
+                <h2 class="font-forum text-7xl md:text-9xl text-white font-black uppercase text-center">ПЕЧОРИН</h2>
+                <p class="font-forum text-lermont-gold text-2xl tracking-[0.5em] mt-4 font-bold uppercase">Психология эгоизма</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-6xl mx-auto">
+                <div class="reveal-block space-y-8">
+                    <h3 class="font-forum text-4xl text-white font-bold uppercase">Кто такой Печорин?</h3>
+                    <p class="text-2xl leading-relaxed text-gray-400">
+                        Это портрет, составленный из пороков всего поколения. Печорин умен, богат, храбр, но абсолютно несчастен. Он «нравственный калека», который разучился любить и живет лишь ради того, чтобы ставить эксперименты над судьбами других людей.
+                    </p>
+                </div>
+                <div class="reveal-block space-y-8">
+                    <h3 class="font-forum text-4xl text-white font-bold uppercase">Почему это важно?</h3>
+                    <p class="text-2xl leading-relaxed text-gray-400">
+                        Лермонтов создал первый в России психологический роман. Он показал, что внутренняя жизнь человека, его мысли и дневники могут быть гораздо интереснее, чем любые военные походы или дуэли.
+                    </p>
+                </div>
+            </div>
+
+            <div class="mt-32 grid grid-cols-1 lg:grid-cols-3 gap-8 reveal-block font-sans text-center">
+                <div class="p-16 border-4 border-white/5 bg-black">
+                    <div class="text-lermont-gold text-6xl font-black mb-6 italic">БЭЛА</div>
+                    <p class="font-bold text-xl uppercase tracking-widest">Разрушенная невинность</p>
+                </div>
+                <div class="p-16 border-4 border-white/5 bg-black">
+                    <div class="text-lermont-gold text-6xl font-black mb-6 italic">МЕРИ</div>
+                    <p class="font-bold text-xl uppercase tracking-widest">Игра чувствами</p>
+                </div>
+                <div class="p-16 border-4 border-white/5 bg-black">
+                    <div class="text-lermont-gold text-6xl font-black mb-6 italic">ВЕРА</div>
+                    <p class="font-bold text-xl uppercase tracking-widest">Единственная любовь</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-32 bg-[#0c0c0c] overflow-hidden">
-        <div class="flex space-x-8 animate-scroll">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Krestovaya_gora_by_M._Lermontov_%281837%29.jpg" class="h-80 grayscale hover:grayscale-0 transition duration-700">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Tiflis_by_M._Lermontov_%281837%29.jpg" class="h-80 grayscale hover:grayscale-0 transition duration-700">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Military_Georgian_road_near_Mtskheta_%28Lermontov%29.jpg/800px-Military_Georgian_road_near_Mtskheta_%28Lermontov%29.jpg" class="h-80 grayscale hover:grayscale-0 transition duration-700">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Lermontov_perestrelka.jpg" class="h-80 grayscale hover:grayscale-0 transition duration-700">
+    <section id="art" class="py-40 px-6">
+        <h2 class="font-forum text-6xl text-center text-white mb-24 font-bold uppercase tracking-widest reveal-block">Кисть поэта</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 reveal-block">
+            <div class="overflow-hidden group relative h-[500px]">
+                <img src="https://tarhany.ru/media/fckeditor_storage/%D0%92%D0%B8%D0%B4%20%D0%BA%D1%80%D0%B5%D1%81%D1%82%D0%BE%D0%B2%D0%BE%D0%B9%20%D0%B3%D0%BE%D1%80%D1%8B(1).jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <p class="font-forum text-3xl text-white uppercase font-bold tracking-widest">Крестовая гора</p>
+                </div>
+            </div>
+            <div class="overflow-hidden group relative h-[500px]">
+                <img src="https://gorets-media.ru/uploads/images/Hronogor/Jule/.thumbs/a5d052bae438b066ce6464bc98a12bd2_693_408_1.jpg" class="w-full h-full object-cover transition duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition">
+                    <p class="font-forum text-3xl text-white uppercase font-bold tracking-widest">Схватка</p>
+                </div>
+            </div>
         </div>
-        <p class="text-center mt-12 font-forum text-xs tracking-widest text-lermont-gold uppercase opacity-50">Живописное наследие поэта</p>
     </section>
 
-    <footer class="py-20 border-t border-white/5">
-        <div class="container mx-auto px-6 text-center">
-            <h3 class="font-forum text-2xl text-lermont-gold mb-6 uppercase tracking-widest">Бессмертие</h3>
-            <p class="font-serif italic text-gray-500 max-w-xl mx-auto">
-                «Нет, я не Байрон, я другой, Еще неведомый избранник, Как он, гонимый миром странник, Но только с русскою душой.»
+    <footer class="py-40 bg-black border-t border-lermont-gold/20">
+        <div class="container mx-auto px-6 text-center reveal-block">
+            <h2 class="font-forum text-[8vw] leading-none text-white font-black uppercase mb-12">БЕССМЕРТИЕ</h2>
+            <p class="font-serif italic text-4xl text-lermont-gold mb-16 max-w-4xl mx-auto">
+                «Под ним струя светлей лазури, Над ним луч солнца золотой...»
             </p>
-            <div class="mt-12 text-[10px] text-gray-600 uppercase tracking-widest">
-                2026 • Урок литературы • 9 класс
-            </div>
+            <div class="w-full h-px bg-lermont-gold/30 mb-12"></div>
+            <p class="text-sm font-black tracking-[0.5em] text-gray-600 uppercase">М.Ю. Лермонтов • 1814-1841</p>
         </div>
     </footer>
 
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero animations
-        gsap.to(".hero-text", { 
-            opacity: 1, 
-            y: 0, 
-            duration: 1.5, 
-            stagger: 0.3, 
-            ease: "power4.out",
-            delay: 0.5 
+        // Главный экран
+        gsap.to(".hero-text", {
+            opacity: 1,
+            y: 0,
+            duration: 1.5,
+            stagger: 0.4,
+            ease: "power4.out"
         });
 
-        // Parallax hero
+        // Параллакс фона
         gsap.to("#hero-img", {
             scrollTrigger: {
                 trigger: "#intro",
                 start: "top top",
                 scrub: true
             },
-            scale: 1.3,
-            y: 100
+            scale: 1.4,
+            y: 150
         });
 
-        // Text appearance
-        gsap.utils.toArray('.reveal-text').forEach(section => {
-            gsap.from(section, {
+        // Анимация появления блоков при скролле
+        gsap.utils.toArray('.reveal-block').forEach(section => {
+            gsap.to(section, {
                 scrollTrigger: {
                     trigger: section,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
+                    start: "top 80%",
+                    toggleActions: "play none none none"
                 },
-                opacity: 0,
-                y: 40,
-                duration: 1.2,
-                ease: "power2.out"
+                opacity: 1,
+                y: 0,
+                duration: 1.5,
+                ease: "power3.out"
             });
         });
 
-        // Horizontal scroll for art gallery
-        gsap.to(".animate-scroll", {
-            x: "-50%",
-            duration: 30,
-            repeat: -1,
-            ease: "linear"
-        });
-
-        // Parallax for landscape image
-        gsap.to(".parallax-img", {
-            scrollTrigger: {
-                trigger: "#caucasus",
-                start: "top bottom",
-                scrub: true
-            },
-            y: -80
+        // Плавный скролл для ссылок
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
     </script>
 </body>
